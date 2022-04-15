@@ -1,0 +1,6 @@
+read_csv('https://raw.githubusercontent.com/bmcquaid1959/week7/main/AllBooksContent.csv')%>%
+filter(lng > 25, lng < 60) %>%
+group_by(lat=round(lat,1), lng=round(lng, 1)) %>%
+summarize(value = sum(T_P, na.rm=TRUE)) %>%
+ungroup() %>%
+complete(lat, lng) %>%
